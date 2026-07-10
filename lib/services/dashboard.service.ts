@@ -188,7 +188,7 @@ export async function getDashboardAlerts(
       .limit(5)
 
     // Buscar nomes dos ingredientes
-    let produtosVencendoComNomes = []
+    let produtosVencendoComNomes: any[] = []
     if (produtosVencendo && produtosVencendo.length > 0) {
       const { data: ingredientesData } = await supabase
         .from('ingredientes')
