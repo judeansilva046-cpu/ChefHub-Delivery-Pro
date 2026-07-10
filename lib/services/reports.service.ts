@@ -49,11 +49,11 @@ export async function getStockValueReport(empresaId: string) {
   if (!data) return { items: [], totalValue: 0 }
 
   const items = data.map((item) => ({
-    nome: item.ingredientes?.nome,
+    nome: (item.ingredientes as any)?.nome,
     quantidade: item.quantidade,
-    unidade: item.ingredientes?.unidade_medida,
-    custoUnitario: item.ingredientes?.custo_atual,
-    valorTotal: item.quantidade * (item.ingredientes?.custo_atual || 0),
+    unidade: (item.ingredientes as any)?.unidade_medida,
+    custoUnitario: (item.ingredientes as any)?.custo_atual,
+    valorTotal: item.quantidade * ((item.ingredientes as any)?.custo_atual || 0),
   }))
 
   return {
@@ -89,11 +89,11 @@ export async function getIngredientConsumptionReport(
   > = {}
 
   data?.forEach((mov) => {
-    const nome = mov.ingredientes?.nome || 'Desconhecido'
+    const nome = (mov.ingredientes as any)?.nome || 'Desconhecido'
     if (!byIngredient[nome]) {
       byIngredient[nome] = {
         quantidade: 0,
-        unidade: mov.ingredientes?.unidade_medida || '',
+        unidade: (mov.ingredientes as any)?.unidade_medida || '',
       }
     }
     byIngredient[nome].quantidade += mov.quantidade

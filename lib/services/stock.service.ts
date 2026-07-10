@@ -1,5 +1,4 @@
 import { createClient } from '@/lib/supabase/client'
-import { Estoque, MovimentacaoEstoque } from '@/types'
 
 /**
  * Buscar estoque atual com ingrediente info

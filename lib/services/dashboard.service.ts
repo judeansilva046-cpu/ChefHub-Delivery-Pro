@@ -217,10 +217,6 @@ export async function getDashboardAlerts(
       .limit(5)
 
     // Compras necessárias (receitas com ingredientes em falta)
-    const { data: itensReceita } = await supabase
-      .from('itens_receita')
-      .select('ingrediente_id, quantidade')
-
     const { data: estoque } = await supabase
       .from('estoque')
       .select('ingrediente_id, quantidade')

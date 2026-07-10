@@ -190,7 +190,7 @@ export async function recalculateRecipeCosts(recipeId: string): Promise<void> {
 
   // Calcular custo total
   const custoTotal = items.reduce(
-    (acc, item) => acc + item.quantidade * (item.ingredientes?.custo_atual || 0),
+    (acc, item) => acc + item.quantidade * ((item.ingredientes as any)?.custo_atual || 0),
     0
   )
 
